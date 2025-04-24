@@ -4,11 +4,7 @@ import email
 from email.header import decode_header
 import time
 from datetime import datetime
-from dotenv import load_dotenv
-load_dotenv()
 
-EMAIL = os.getenv('EMAIL')
-APP_PASSWORD = os.getenv('APP_PASSWORD')
 
 
 class CheckEmail:
@@ -59,7 +55,7 @@ class CheckEmail:
             try:
                 # Connect to server
                 self.mail = imaplib.IMAP4_SSL('imap.gmail.com')
-                self.mail.login(EMAIL, APP_PASSWORD)
+                self.mail.login(self.email, self.app_password)
                 
                 self._check_recent_emails()
                 
